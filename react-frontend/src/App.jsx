@@ -57,6 +57,12 @@ function App() {
   }
 
   const { profile, socials, stats, skills, experiences, education, projects } = cv
+  const imagePath = profile.photo || profile.photoUrl
+  const photoSource = imagePath
+    ? imagePath.startsWith('http')
+      ? imagePath
+      : `${BACKEND_URL}${imagePath}`
+    : null
 
   return (
     <main className="page-shell">
@@ -97,11 +103,11 @@ function App() {
           <div className="profile-card">
             <div className="avatar-ring">
               <div className="avatar">
-                {profile.photoUrl ? (
-                  <img src={profile.photoUrl} alt={profile.name} className="avatar-img" />
-                  ) : (
-                        profile.photoText
-                      )}
+                {photoSource ? (
+                  <img src={photoSource} alt={profile.name} className="avatar-img" />
+                ) : (
+                  profile.photoText
+                )}
               </div>
             </div>
             <h3>{profile.name}</h3>
