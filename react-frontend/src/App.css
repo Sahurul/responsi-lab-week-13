@@ -979,3 +979,343 @@
      </div>
    </div>
    ========================================================= */
+
+/* =========================================================
+   SYNC FIX — match actual JSX markup (App.jsx)
+   ========================================================= */
+
+/* Profil Singkat: about-card only wraps a single <p>, so make it a simple block */
+.about-card {
+  display: block;
+  padding: 28px 32px;
+}
+
+.about-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+/* Experience + Education side-by-side layout */
+.content-section.two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+/* Skills: real markup uses .skill-card with a .skill-top row and a .skill-bar track */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.skill-card {
+  padding: 18px 20px;
+  border: 2px solid var(--border);
+  background: var(--card);
+  box-shadow: 3px 3px 0 0 var(--ink);
+  transition: transform 0.15s steps(2), box-shadow 0.15s steps(2);
+}
+
+.skill-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 0 var(--ink);
+}
+
+.skill-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.skill-top strong {
+  color: var(--text);
+  font-family: 'Press Start 2P', Georgia, monospace;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.skill-top span {
+  color: var(--highlight);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 11px;
+}
+
+.skill-bar {
+  height: 18px;
+  padding: 3px;
+  border: 2px solid var(--border);
+  background: var(--deepblue);
+  box-shadow: inset 3px 3px 0 0 var(--ink);
+}
+
+.skill-bar div {
+  height: 100%;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--highlight) 0px,
+    var(--highlight) 8px,
+    var(--steel) 8px,
+    var(--steel) 11px
+  );
+  transition: width 0.6s steps(10);
+}
+
+/* Projects: real markup uses .project-grid and .tech-list, not .projects-grid / .project-tags */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tech-list span {
+  padding: 6px 12px;
+  border: 2px solid var(--border);
+  background: var(--card);
+  color: var(--highlight);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Stats: stat-card sits directly in .stats-section, needs its own grid */
+.stats-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  padding: 50px 0;
+}
+
+.stat-card strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--highlight);
+  font-family: 'Press Start 2P', Georgia, monospace;
+  font-size: clamp(20px, 3vw, 28px);
+}
+
+.stat-card span {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Social links inside profile-card */
+.social-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.social-list a {
+  padding: 8px 14px;
+  border: 2px solid var(--border);
+  color: var(--text);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: transform 0.15s steps(2), border-color 0.15s steps(2), color 0.15s steps(2);
+}
+
+.social-list a:hover {
+  transform: translate(-2px, -2px);
+  border-color: var(--highlight);
+  color: var(--highlight);
+}
+
+/* Contact section: no wrapper class in JSX, target children directly */
+.contact-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 60px 32px;
+  border: var(--pixel) solid var(--border);
+  background: var(--deepblue);
+  box-shadow: var(--pixel) var(--pixel) 0 0 var(--ink);
+}
+
+.contact-section > div {
+  max-width: 560px;
+}
+
+.contact-section h2 {
+  margin: 0 0 12px;
+  color: var(--text);
+  font-family: 'Press Start 2P', Georgia, monospace;
+  font-size: clamp(18px, 3vw, 26px);
+  line-height: 1.6;
+}
+
+.contact-section p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* =========================================================
+   MOBILE RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .content-section.two-column {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-card {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-shell {
+    padding: 16px;
+  }
+
+  .hero-section {
+    min-height: auto;
+    padding: 18px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding-bottom: 36px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 10px;
+  }
+
+  .brand {
+    font-size: 13px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(22px, 8vw, 34px);
+  }
+
+  .hero-copy h2 {
+    font-size: clamp(11px, 4vw, 14px);
+  }
+
+  .tagline {
+    font-size: 14px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .primary-button,
+  .secondary-button {
+    width: 100%;
+  }
+
+  .quick-info span {
+    font-size: 9px;
+    padding: 8px 10px;
+  }
+
+  .about-card {
+    padding: 20px;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(16px, 6vw, 22px);
+  }
+
+  .timeline {
+    padding-left: 22px;
+  }
+
+  .timeline-item::before {
+    left: -28px;
+  }
+
+  .timeline-item {
+    padding: 16px 18px;
+  }
+
+  .project-grid,
+  .skills-grid,
+  .stats-section {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-section {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px 20px;
+  }
+
+  .contact-section .primary-button {
+    width: 100%;
+  }
+
+  .book-float {
+    width: 40px;
+    height: 40px;
+    opacity: 0.1;
+  }
+}
+
+@media (max-width: 480px) {
+  .avatar-ring {
+    width: 140px;
+    height: 140px;
+  }
+
+  .avatar {
+    width: 118px;
+    height: 118px;
+    font-size: 24px;
+  }
+
+  .brand {
+    font-size: 11px;
+  }
+
+  .nav-links {
+    font-size: 9px;
+    gap: 10px;
+  }
+
+  .skill-top strong,
+  .skill-top span {
+    font-size: 9px;
+  }
+
+  .project-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+  }
+}
