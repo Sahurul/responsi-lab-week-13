@@ -7,7 +7,8 @@
     "email": "ahmadtaufiksahrulh@students.amikom.ac.id",
     "phone": "+62 0882-1894-3514",
     "website": "https://rosebahlel.dev",
-    "photoUrl": "/Profile.jpg",
+    "photoText": "ATSH",  
+    "photo": "/assets/Profile.jpg",
     "summary": "Saya adalah mahasiswa Informatika yang memiliki minat pada pengembangan aplikasi web, REST API, desain antarmuka, dan integrasi teknologi AI. Saya terbiasa membangun project menggunakan JavaScript, Node.js, Express.js, React.js, dan database dasar."
   },
   "socials": [
